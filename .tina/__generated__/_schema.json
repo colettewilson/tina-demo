@@ -14,13 +14,101 @@
       "format": "mdx",
       "fields": [
         {
-          "name": "body",
-          "label": "Main Content",
-          "type": "rich-text",
-          "isBody": true,
+          "label": "Page Header",
+          "name": "header",
+          "type": "object",
+          "fields": [
+            {
+              "label": "Title",
+              "name": "title",
+              "type": "string",
+              "namespace": [
+                "page",
+                "header",
+                "title"
+              ]
+            },
+            {
+              "label": "Subtitle",
+              "name": "subtitle",
+              "type": "string",
+              "namespace": [
+                "page",
+                "header",
+                "subtitle"
+              ]
+            }
+          ],
           "namespace": [
             "page",
-            "body"
+            "header"
+          ]
+        },
+        {
+          "label": "Sections",
+          "name": "section",
+          "type": "object",
+          "list": true,
+          "templates": [
+            {
+              "label": "Text Section",
+              "name": "textSection",
+              "fields": [
+                {
+                  "label": "Body",
+                  "name": "body",
+                  "type": "rich-text",
+                  "namespace": [
+                    "page",
+                    "section",
+                    "textSection",
+                    "body"
+                  ]
+                }
+              ],
+              "namespace": [
+                "page",
+                "section",
+                "textSection"
+              ]
+            },
+            {
+              "label": "Image/Text Section",
+              "name": "imageTextSection",
+              "fields": [
+                {
+                  "label": "Body",
+                  "name": "body",
+                  "type": "rich-text",
+                  "namespace": [
+                    "page",
+                    "section",
+                    "imageTextSection",
+                    "body"
+                  ]
+                },
+                {
+                  "label": "Image",
+                  "name": "image",
+                  "type": "image",
+                  "namespace": [
+                    "page",
+                    "section",
+                    "imageTextSection",
+                    "image"
+                  ]
+                }
+              ],
+              "namespace": [
+                "page",
+                "section",
+                "imageTextSection"
+              ]
+            }
+          ],
+          "namespace": [
+            "page",
+            "section"
           ]
         }
       ],
@@ -43,16 +131,84 @@
           ]
         },
         {
-          "type": "string",
-          "label": "Blog Post Body",
+          "label": "Body",
           "name": "body",
+          "type": "rich-text",
           "isBody": true,
-          "ui": {
-            "component": "textarea"
-          },
           "namespace": [
             "post",
             "body"
+          ]
+        },
+        {
+          "title": "SEO",
+          "name": "seo",
+          "type": "object",
+          "fields": [
+            {
+              "label": "Canonical (Optional)",
+              "name": "canonical",
+              "type": "string",
+              "description": "A default canonical url will be generated using the site url (provided in the global SEO options) and the slug. It is only necessary to complete this field if wishing to override the dynamic canonical url.",
+              "namespace": [
+                "post",
+                "seo",
+                "canonical"
+              ]
+            },
+            {
+              "label": "Meta title (Optional)",
+              "name": "metaTitle",
+              "type": "string",
+              "description": "A default meta title will be generated using the page title, the secondary title (provided in the global SEO options) and the site title. This field is only necessary if wishing to override the dynamic meta title.",
+              "namespace": [
+                "post",
+                "seo",
+                "metaTitle"
+              ]
+            },
+            {
+              "label": "Description (Recommended)",
+              "name": "description",
+              "type": "string",
+              "description": "Please provide a unique meta description.",
+              "ui": {
+                "component": "textarea"
+              },
+              "namespace": [
+                "post",
+                "seo",
+                "description"
+              ]
+            },
+            {
+              "label": "Open Graph Image (Optional)",
+              "name": "image",
+              "type": "image",
+              "namespace": [
+                "post",
+                "seo",
+                "image"
+              ]
+            },
+            {
+              "label": "No Index Meta tag",
+              "name": "noIndex",
+              "type": "boolean",
+              "description": "Remove URL from search index.",
+              "options": {
+                "layout": "checkbox"
+              },
+              "namespace": [
+                "post",
+                "seo",
+                "noIndex"
+              ]
+            }
+          ],
+          "namespace": [
+            "post",
+            "seo"
           ]
         }
       ],

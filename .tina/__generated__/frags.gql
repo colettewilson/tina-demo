@@ -1,8 +1,30 @@
 fragment PageParts on Page {
-  body
+  header {
+    __typename
+    title
+    subtitle
+  }
+  section {
+    __typename
+    ... on PageSectionTextSection {
+      body
+    }
+    ... on PageSectionImageTextSection {
+      body
+      image
+    }
+  }
 }
 
 fragment PostParts on Post {
   title
   body
+  seo {
+    __typename
+    canonical
+    metaTitle
+    description
+    image
+    noIndex
+  }
 }

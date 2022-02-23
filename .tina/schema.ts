@@ -1,41 +1,11 @@
-import { defineSchema } from "@tinacms/cli";
+import { defineSchema } from "@tinacms/cli"
+
+import page from './pages/page'
+import blog from './pages/blog'
 
 export default defineSchema({
   collections: [
-    {
-      label: "Page Content",
-      name: "page",
-      path: "content/page",
-      format: "mdx",
-      fields: [
-        {
-          name: "body",
-          label: "Main Content",
-          type: "rich-text",
-          isBody: true,
-        },
-      ],
-    },
-    {
-      label: "Blog Posts",
-      name: "post",
-      path: "content/post",
-      fields: [
-        {
-          type: "string",
-          label: "Title",
-          name: "title",
-        },
-        {
-          type: "string",
-          label: "Blog Post Body",
-          name: "body",
-          isBody: true,
-          ui: {
-            component: "textarea",
-          },
-        },
-      ],
-    },
+    page,
+    blog,
   ],
-});
+})

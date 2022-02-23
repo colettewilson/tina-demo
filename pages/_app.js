@@ -1,8 +1,8 @@
-import dynamic from "next/dynamic";
-import { TinaEditProvider } from "tinacms/dist/edit-state";
+import dynamic from "next/dynamic"
+import { TinaEditProvider } from "tinacms/dist/edit-state"
 
 // @ts-ignore FIXME: default export needs to be 'ComponentType<{}>
-const TinaCMS = dynamic(() => import("tinacms"), { ssr: false });
+const TinaCMS = dynamic(() => import("tinacms"), { ssr: false })
 
 const branch = "main";
 // When working locally, hit our local filesystem.
@@ -10,7 +10,7 @@ const branch = "main";
 const apiURL =
   process.env.NODE_ENV == "development"
     ? "http://localhost:4001/graphql"
-    : `https://content.tinajs.io/content/${process.env.NEXT_PUBLIC_TINA_CLIENT_ID}/github/${branch}`;
+    : `https://content.tinajs.io/content/${process.env.NEXT_PUBLIC_TINA_CLIENT_ID}/github/${branch}`
 
 const App = ({ Component, pageProps }) => {
   return (
@@ -20,9 +20,14 @@ const App = ({ Component, pageProps }) => {
         editMode={
           <TinaCMS
             cmsCallback={(cms) => {
-              cms.flags.set("tina-admin", true);
+              cms.flags.set("tina-admin", true)
             }}
             apiURL={apiURL}
+            mediaStore={async () => {
+              // Load media store dynamically so it only loads in edit mode
+              const pack = await import("next-tinacms-cloudinary")
+              return pack.TinaCloudCloudinaryMediaStore;
+            }}
           >
             <Component {...pageProps} />
           </TinaCMS>

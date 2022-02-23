@@ -17,6 +17,14 @@
     "createDocument": "create",
     "updateDocument": "update"
   },
+  "PageSection": {
+    "type": "PageSection",
+    "resolveType": "unionData",
+    "typeMap": {
+      "textSection": "PageSectionTextSection",
+      "imageTextSection": "PageSectionImageTextSection"
+    }
+  },
   "PageDocument": {
     "type": "PageDocument",
     "resolveType": "collectionDocument",

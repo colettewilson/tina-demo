@@ -79,8 +79,25 @@ type Collection {
 
 union DocumentNode = PageDocument | PostDocument
 
-type Page {
+type PageHeader {
+  title: String
+  subtitle: String
+}
+
+type PageSectionTextSection {
   body: JSON
+}
+
+type PageSectionImageTextSection {
+  body: JSON
+  image: String
+}
+
+union PageSection = PageSectionTextSection | PageSectionImageTextSection
+
+type Page {
+  header: PageHeader
+  section: [PageSection]
 }
 
 type PageDocument implements Node & Document {
@@ -103,9 +120,18 @@ type PageConnection implements Connection {
   edges: [PageConnectionEdges]
 }
 
+type PostSeo {
+  canonical: String
+  metaTitle: String
+  description: String
+  image: String
+  noIndex: Boolean
+}
+
 type Post {
   title: String
-  body: String
+  body: JSON
+  seo: PostSeo
 }
 
 type PostDocument implements Node & Document {
@@ -143,13 +169,42 @@ input DocumentMutation {
   post: PostMutation
 }
 
-input PageMutation {
+input PageHeaderMutation {
+  title: String
+  subtitle: String
+}
+
+input PageSectionTextSectionMutation {
   body: JSON
+}
+
+input PageSectionImageTextSectionMutation {
+  body: JSON
+  image: String
+}
+
+input PageSectionMutation {
+  textSection: PageSectionTextSectionMutation
+  imageTextSection: PageSectionImageTextSectionMutation
+}
+
+input PageMutation {
+  header: PageHeaderMutation
+  section: [PageSectionMutation]
+}
+
+input PostSeoMutation {
+  canonical: String
+  metaTitle: String
+  description: String
+  image: String
+  noIndex: Boolean
 }
 
 input PostMutation {
   title: String
-  body: String
+  body: JSON
+  seo: PostSeoMutation
 }
 
 schema {
