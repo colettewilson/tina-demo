@@ -1,0 +1,10 @@
+<svg>
+    <defs>
+        <filter id="boxShadow" x="0" y="0" width="200%" height="200%">
+            <feOffset result="offOut" in="SourceAlpha" dx="1" dy="1"></feOffset>
+            <feGaussianBlur result="blurOut" in="offOut" stdDeviation="1"></feGaussianBlur>
+            <feBlend in="SourceGraphic" in2="blurOut" mode="normal"></feBlend>
+        </filter>
+    </defs>
+    <use xlink:href="#tilt"></use>
+</svg>

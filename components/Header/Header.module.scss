@@ -1,0 +1,10 @@
+.header {
+  padding: block(gutter) 0;
+  color: var(--font-color);
+  background-color: black;
+  box-shadow: 0 0 0 12px var(--shadow);
+}
+
+.headerLogo {
+  width: 48px;
+}

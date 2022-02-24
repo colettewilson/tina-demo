@@ -1,3 +1,11 @@
+## Please enjoy these Tina Turner gif before following the instructions below!
+
+![Tina Turner](https://i.gifer.com/2Ehz.gif)
+![Tina Turner](https://i.gifer.com/MFGY.gif)
+![Tina Turner](https://tinaturnerblog.files.wordpress.com/2018/03/giphy4.gif)
+![Tina Turner](https://media4.giphy.com/media/QMp7YZwbBkegpoYwPc/giphy.gif)
+![Tina Turner](https://i.pinimg.com/originals/57/36/09/573609cfbb37fedabef33c4a2041c633.gif)
+
 This is a [Tina CMS](https://tina.io/) project.
 ## Getting Started
 

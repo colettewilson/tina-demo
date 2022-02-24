@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic'
 import { TinaEditProvider } from 'tinacms/dist/edit-state'
 
-import "../_global/base.scss"
-import "../_global/grid.scss"
-import "../_global/theme.scss"
+import "../assets/_global/base.scss"
+import "../assets/_global/grid.scss"
+import "../assets/_global/theme.scss"
 
 // @ts-ignore FIXME: default export needs to be 'ComponentType<{}>
 const TinaCMS = dynamic(() => import('tinacms'), { ssr: false })

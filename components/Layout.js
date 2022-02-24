@@ -1,6 +1,7 @@
-import Link from 'next/link'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
+
+import Header from './Header'
 
 export const Layout = props => {
   const { children } = props
@@ -12,15 +13,7 @@ export const Layout = props => {
         <meta name="description" content="A TinaCMS Application" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header>
-        <Link href="/">
-          <a>Home</a>
-        </Link>
-        {' | '}
-        <Link href="/posts">
-          <a>Posts</a>
-        </Link>
-      </header>
+      <Header />
       <main>{children}</main>
     </div>
   )
