@@ -1,15 +1,14 @@
 import Link from 'next/link'
 import Head from 'next/head'
+import PropTypes from 'prop-types'
 
-export const Layout = (props) => {
+export const Layout = props => {
+  const { children } = props
+
   return (
-    <div
-      style={{
-        margin: '3rem',
-      }}
-    >
+    <div>
       <Head>
-        <title>Tina App</title>
+        <title>Tina Demo</title>
         <meta name="description" content="A TinaCMS Application" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -22,7 +21,11 @@ export const Layout = (props) => {
           <a>Posts</a>
         </Link>
       </header>
-      <main>{props.children}</main>
+      <main>{children}</main>
     </div>
   )
+}
+
+Layout.propTypes = {
+  children: PropTypes.object,
 }

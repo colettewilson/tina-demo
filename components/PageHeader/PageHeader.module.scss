@@ -1,0 +1,14 @@
+.pageHeader {
+  padding: block(xlarge) 0;
+  color: var(--font-color);
+  background-color: var(--bg-color);
+}
+
+.pageHeaderTitle {
+  @include h1;
+  color: var(--primary-color);
+}
+
+.pageHeaderSubtitle {
+  @include h2;
+}

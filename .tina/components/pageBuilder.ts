@@ -25,7 +25,7 @@ const textSection = {
             type: 'rich-text',
         },
     ],
-  }
+}
 
 export default {
     label: 'Sections',

@@ -1,15 +1,29 @@
-import { staticRequest } from "tinacms";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
-import { Layout } from "../components/Layout";
-import { useTina } from "tinacms/dist/edit-state";
+import { staticRequest } from 'tinacms'
+import { useTina } from 'tinacms/dist/edit-state'
+import { Layout } from '../components/Layout'
+import PageHeader from '../components/PageHeader'
+import PageBuilder from '../components/PageBuilder'
 
 const query = `{
-  getPageDocument(relativePath: "home.mdx"){
-    data{
-      body
+  getPageDocument(relativePath: "home.mdx") {
+    data {
+      header {
+        title
+        subtitle
+      }
+      section {
+        __typename
+        ... on PageSectionTextSection {
+          body
+        }
+        __typename
+        ... on PageSectionImageTextSection {
+          body
+        }
+      }
     }
   }
-}`;
+}`
 
 export default function Home(props) {
   // data passes though in production mode and data is updated to the sidebar data in edit-mode
@@ -17,24 +31,26 @@ export default function Home(props) {
     query,
     variables: {},
     data: props.data,
-  });
+  })
 
-  const content = data.getPageDocument.data.body;
+  const { header, section } = data.getPageDocument.data
+
   return (
     <Layout>
-      <TinaMarkdown content={content} />
+      <PageHeader {...header} />
+      <PageBuilder sections={section} />
     </Layout>
-  );
+  )
 }
 
 export const getStaticProps = async () => {
-  const variables = {};
-  let data = {};
+  const variables = {}
+  let data = {}
   try {
     data = await staticRequest({
       query,
       variables,
-    });
+    })
   } catch {
     // swallow errors related to document creation
   }
@@ -42,7 +58,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       data,
-      //myOtherProp: 'some-other-data',
+      // myOtherProp: 'some-other-data',
     },
-  };
-};
+  }
+}
