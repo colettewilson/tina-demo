@@ -1,5 +1,6 @@
 ## Please enjoy these Tina Turner gifs before following the instructions below!
 
+![Tina Turner](https://i.makeagif.com/media/3-24-2017/fm-NlR.gif)
 ![Tina Turner](https://tinaturnerblog.files.wordpress.com/2018/04/animated-gif-downsized_large-2.gif)
 ![Tina Turner](https://media4.giphy.com/media/QMp7YZwbBkegpoYwPc/giphy.gif)
 
