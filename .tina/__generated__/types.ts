@@ -172,11 +172,25 @@ export type PageSectionTextSection = {
 
 export type PageSectionImageTextSection = {
   __typename?: 'PageSectionImageTextSection';
+  layout?: Maybe<Scalars['String']>;
   body?: Maybe<Scalars['JSON']>;
   image?: Maybe<Scalars['String']>;
+  alt?: Maybe<Scalars['String']>;
 };
 
-export type PageSection = PageSectionTextSection | PageSectionImageTextSection;
+export type PageSectionVideoSectionVideoEmbed = {
+  __typename?: 'PageSectionVideoSectionVideoEmbed';
+  videoUrl?: Maybe<Scalars['String']>;
+  aspectRatio?: Maybe<Scalars['String']>;
+};
+
+export type PageSectionVideoSection = {
+  __typename?: 'PageSectionVideoSection';
+  body?: Maybe<Scalars['JSON']>;
+  videoEmbed?: Maybe<PageSectionVideoSectionVideoEmbed>;
+};
+
+export type PageSection = PageSectionTextSection | PageSectionImageTextSection | PageSectionVideoSection;
 
 export type Page = {
   __typename?: 'Page';
@@ -317,13 +331,26 @@ export type PageSectionTextSectionMutation = {
 };
 
 export type PageSectionImageTextSectionMutation = {
+  layout?: InputMaybe<Scalars['String']>;
   body?: InputMaybe<Scalars['JSON']>;
   image?: InputMaybe<Scalars['String']>;
+  alt?: InputMaybe<Scalars['String']>;
+};
+
+export type PageSectionVideoSectionVideoEmbedMutation = {
+  videoUrl?: InputMaybe<Scalars['String']>;
+  aspectRatio?: InputMaybe<Scalars['String']>;
+};
+
+export type PageSectionVideoSectionMutation = {
+  body?: InputMaybe<Scalars['JSON']>;
+  videoEmbed?: InputMaybe<PageSectionVideoSectionVideoEmbedMutation>;
 };
 
 export type PageSectionMutation = {
   textSection?: InputMaybe<PageSectionTextSectionMutation>;
   imageTextSection?: InputMaybe<PageSectionImageTextSectionMutation>;
+  videoSection?: InputMaybe<PageSectionVideoSectionMutation>;
 };
 
 export type PageMutation = {
@@ -345,7 +372,7 @@ export type PostMutation = {
   seo?: InputMaybe<PostSeoMutation>;
 };
 
-export type PagePartsFragment = { __typename?: 'Page', header?: { __typename: 'PageHeader', title?: string | null | undefined, subtitle?: string | null | undefined } | null | undefined, section?: Array<{ __typename: 'PageSectionTextSection', body?: any | null | undefined } | { __typename: 'PageSectionImageTextSection', body?: any | null | undefined, image?: string | null | undefined } | null | undefined> | null | undefined };
+export type PagePartsFragment = { __typename?: 'Page', header?: { __typename: 'PageHeader', title?: string | null | undefined, subtitle?: string | null | undefined } | null | undefined, section?: Array<{ __typename: 'PageSectionTextSection', body?: any | null | undefined } | { __typename: 'PageSectionImageTextSection', layout?: string | null | undefined, body?: any | null | undefined, image?: string | null | undefined, alt?: string | null | undefined } | { __typename: 'PageSectionVideoSection', body?: any | null | undefined, videoEmbed?: { __typename: 'PageSectionVideoSectionVideoEmbed', videoUrl?: string | null | undefined, aspectRatio?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined };
 
 export type PostPartsFragment = { __typename?: 'Post', title?: string | null | undefined, body?: any | null | undefined, seo?: { __typename: 'PostSeo', canonical?: string | null | undefined, metaTitle?: string | null | undefined, description?: string | null | undefined, image?: string | null | undefined, noIndex?: boolean | null | undefined } | null | undefined };
 
@@ -354,12 +381,12 @@ export type GetPageDocumentQueryVariables = Exact<{
 }>;
 
 
-export type GetPageDocumentQuery = { __typename?: 'Query', getPageDocument: { __typename?: 'PageDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Page', header?: { __typename: 'PageHeader', title?: string | null | undefined, subtitle?: string | null | undefined } | null | undefined, section?: Array<{ __typename: 'PageSectionTextSection', body?: any | null | undefined } | { __typename: 'PageSectionImageTextSection', body?: any | null | undefined, image?: string | null | undefined } | null | undefined> | null | undefined } } };
+export type GetPageDocumentQuery = { __typename?: 'Query', getPageDocument: { __typename?: 'PageDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Page', header?: { __typename: 'PageHeader', title?: string | null | undefined, subtitle?: string | null | undefined } | null | undefined, section?: Array<{ __typename: 'PageSectionTextSection', body?: any | null | undefined } | { __typename: 'PageSectionImageTextSection', layout?: string | null | undefined, body?: any | null | undefined, image?: string | null | undefined, alt?: string | null | undefined } | { __typename: 'PageSectionVideoSection', body?: any | null | undefined, videoEmbed?: { __typename: 'PageSectionVideoSectionVideoEmbed', videoUrl?: string | null | undefined, aspectRatio?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined } } };
 
 export type GetPageListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetPageListQuery = { __typename?: 'Query', getPageList: { __typename?: 'PageConnection', totalCount: number, edges?: Array<{ __typename?: 'PageConnectionEdges', node?: { __typename?: 'PageDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Page', header?: { __typename: 'PageHeader', title?: string | null | undefined, subtitle?: string | null | undefined } | null | undefined, section?: Array<{ __typename: 'PageSectionTextSection', body?: any | null | undefined } | { __typename: 'PageSectionImageTextSection', body?: any | null | undefined, image?: string | null | undefined } | null | undefined> | null | undefined } } | null | undefined } | null | undefined> | null | undefined } };
+export type GetPageListQuery = { __typename?: 'Query', getPageList: { __typename?: 'PageConnection', totalCount: number, edges?: Array<{ __typename?: 'PageConnectionEdges', node?: { __typename?: 'PageDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Page', header?: { __typename: 'PageHeader', title?: string | null | undefined, subtitle?: string | null | undefined } | null | undefined, section?: Array<{ __typename: 'PageSectionTextSection', body?: any | null | undefined } | { __typename: 'PageSectionImageTextSection', layout?: string | null | undefined, body?: any | null | undefined, image?: string | null | undefined, alt?: string | null | undefined } | { __typename: 'PageSectionVideoSection', body?: any | null | undefined, videoEmbed?: { __typename: 'PageSectionVideoSectionVideoEmbed', videoUrl?: string | null | undefined, aspectRatio?: string | null | undefined } | null | undefined } | null | undefined> | null | undefined } } | null | undefined } | null | undefined> | null | undefined } };
 
 export type GetPostDocumentQueryVariables = Exact<{
   relativePath: Scalars['String'];
@@ -386,8 +413,18 @@ export const PagePartsFragmentDoc = gql`
       body
     }
     ... on PageSectionImageTextSection {
+      layout
       body
       image
+      alt
+    }
+    ... on PageSectionVideoSection {
+      body
+      videoEmbed {
+        __typename
+        videoUrl
+        aspectRatio
+      }
     }
   }
 }

@@ -18,7 +18,17 @@ const query = `{
         }
         __typename
         ... on PageSectionImageTextSection {
+          layout
           body
+          image
+        }
+        __typename
+        ... on PageSectionVideoSection {
+          body
+          videoEmbed {
+            videoUrl
+            aspectRatio
+          }
         }
       }
     }

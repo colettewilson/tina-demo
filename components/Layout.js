@@ -20,5 +20,5 @@ export const Layout = props => {
 }
 
 Layout.propTypes = {
-  children: PropTypes.object,
+  children: PropTypes.array,
 }

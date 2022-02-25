@@ -1,0 +1,36 @@
+.richText {
+  > * {
+    margin-bottom: block(gutter);
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  h1 {
+    @include h1;
+  }
+
+  h2 {
+    @include h2;
+  }
+
+  h3 {
+    @include h3;
+  }
+
+  h4 {
+    @include h4;
+  }
+
+  p,
+  b,
+  ol,
+  ul {
+    @include body;
+  }
+
+  b {
+    @include opensans(700);
+  }
+}

@@ -10,8 +10,18 @@ fragment PageParts on Page {
       body
     }
     ... on PageSectionImageTextSection {
+      layout
       body
       image
+      alt
+    }
+    ... on PageSectionVideoSection {
+      body
+      videoEmbed {
+        __typename
+        videoUrl
+        aspectRatio
+      }
     }
   }
 }

@@ -4,3 +4,11 @@
   --bg-color: #1f1f1f;
   --shadow: rgba(0, 0, 0, 0.2);
 }
+
+section {
+  padding: block(xlarge) 0;
+
+  @include breakpoint(large up) {
+    padding: block(2xlarge) 0;
+  }
+}

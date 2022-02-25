@@ -1,0 +1,15 @@
+.videoSectionVideo {
+  position: relative;
+  padding-bottom: 56.25%;
+  margin-bottom: block(xlarge);
+
+  > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.videoSectionVideo[data-aspect="4:3"] {
+  padding-bottom: 75%;
+}

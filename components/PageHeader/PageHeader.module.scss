@@ -2,6 +2,18 @@
   padding: block(xlarge) 0;
   color: var(--font-color);
   background-color: var(--bg-color);
+  background-image: repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.3) 0px,
+      transparent 2px,
+      transparent 10px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(0, 0, 0, 0.3) 0px,
+      transparent 2px,
+      transparent 10px
+    );
 
   @include breakpoint(medium up) {
     padding: block(4xlarge) 0;

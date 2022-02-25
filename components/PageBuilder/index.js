@@ -3,11 +3,13 @@ import PropTypes from 'prop-types'
 
 import TextSection from '../TextSection'
 import ImageTextSection from '../ImageTextSection'
+import VideoSection from '../VideoSection'
 
 const PageBuilder = ({ sections }) => {
     const components = {
         "PageSectionTextSection": TextSection,
-        "PageSectionImageTextSection": ImageTextSection
+        "PageSectionImageTextSection": ImageTextSection,
+        "PageSectionVideoSection": VideoSection
     }
 
     return sections.map((section, index) => {
@@ -23,6 +25,7 @@ const PageBuilder = ({ sections }) => {
 export default PageBuilder
 
 PageBuilder.propTypes = {
-  title: PropTypes.string, 
-  subtitle: PropTypes.string, 
+  sections: PropTypes.shape({
+      body: PropTypes.object
+  })
 }

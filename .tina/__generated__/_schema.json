@@ -75,7 +75,45 @@
             {
               "label": "Image/Text Section",
               "name": "imageTextSection",
+              "ui": {
+                "defaultItem": {
+                  "layout": "row"
+                }
+              },
               "fields": [
+                {
+                  "label": "Layout",
+                  "name": "layout",
+                  "type": "string",
+                  "options": [
+                    {
+                      "label": "Image | Text - Row",
+                      "value": "row"
+                    },
+                    {
+                      "label": "Text | Image - Row",
+                      "value": "row-reverse"
+                    },
+                    {
+                      "label": "Image | Text - Column",
+                      "value": "column"
+                    },
+                    {
+                      "label": "Text | Image - Column",
+                      "value": "column-reverse"
+                    },
+                    {
+                      "label": "Image only",
+                      "value": "image"
+                    }
+                  ],
+                  "namespace": [
+                    "page",
+                    "section",
+                    "imageTextSection",
+                    "layout"
+                  ]
+                },
                 {
                   "label": "Body",
                   "name": "body",
@@ -97,12 +135,97 @@
                     "imageTextSection",
                     "image"
                   ]
+                },
+                {
+                  "label": "Image Alt Description",
+                  "name": "alt",
+                  "type": "string",
+                  "namespace": [
+                    "page",
+                    "section",
+                    "imageTextSection",
+                    "alt"
+                  ]
                 }
               ],
               "namespace": [
                 "page",
                 "section",
                 "imageTextSection"
+              ]
+            },
+            {
+              "label": "Video Section",
+              "name": "videoSection",
+              "fields": [
+                {
+                  "label": "Body",
+                  "name": "body",
+                  "type": "rich-text",
+                  "namespace": [
+                    "page",
+                    "section",
+                    "videoSection",
+                    "body"
+                  ]
+                },
+                {
+                  "label": "Video",
+                  "name": "videoEmbed",
+                  "type": "object",
+                  "ui": {
+                    "defaultItem": {
+                      "aspectRatio": "16:9"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "label": "Video URL",
+                      "name": "videoUrl",
+                      "type": "string",
+                      "namespace": [
+                        "page",
+                        "section",
+                        "videoSection",
+                        "videoEmbed",
+                        "videoUrl"
+                      ]
+                    },
+                    {
+                      "label": "Aspect Ratio",
+                      "name": "aspectRatio",
+                      "type": "string",
+                      "options": [
+                        {
+                          "label": "16:9",
+                          "value": "16:9"
+                        },
+                        {
+                          "label": "4:3",
+                          "value": "4:3"
+                        }
+                      ],
+                      "namespace": [
+                        "page",
+                        "section",
+                        "videoSection",
+                        "videoEmbed",
+                        "aspectRatio"
+                      ]
+                    }
+                  ],
+                  "namespace": [
+                    "page",
+                    "section",
+                    "videoSection",
+                    "videoEmbed"
+                  ]
+                }
+              ],
+              "namespace": [
+                "page",
+                "section",
+                "videoSection"
               ]
             }
           ],

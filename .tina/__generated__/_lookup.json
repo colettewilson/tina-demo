@@ -22,7 +22,8 @@
     "resolveType": "unionData",
     "typeMap": {
       "textSection": "PageSectionTextSection",
-      "imageTextSection": "PageSectionImageTextSection"
+      "imageTextSection": "PageSectionImageTextSection",
+      "videoSection": "PageSectionVideoSection"
     }
   },
   "PageDocument": {

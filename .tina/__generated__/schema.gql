@@ -89,11 +89,23 @@ type PageSectionTextSection {
 }
 
 type PageSectionImageTextSection {
+  layout: String
   body: JSON
   image: String
+  alt: String
 }
 
-union PageSection = PageSectionTextSection | PageSectionImageTextSection
+type PageSectionVideoSectionVideoEmbed {
+  videoUrl: String
+  aspectRatio: String
+}
+
+type PageSectionVideoSection {
+  body: JSON
+  videoEmbed: PageSectionVideoSectionVideoEmbed
+}
+
+union PageSection = PageSectionTextSection | PageSectionImageTextSection | PageSectionVideoSection
 
 type Page {
   header: PageHeader
@@ -179,13 +191,26 @@ input PageSectionTextSectionMutation {
 }
 
 input PageSectionImageTextSectionMutation {
+  layout: String
   body: JSON
   image: String
+  alt: String
+}
+
+input PageSectionVideoSectionVideoEmbedMutation {
+  videoUrl: String
+  aspectRatio: String
+}
+
+input PageSectionVideoSectionMutation {
+  body: JSON
+  videoEmbed: PageSectionVideoSectionVideoEmbedMutation
 }
 
 input PageSectionMutation {
   textSection: PageSectionTextSectionMutation
   imageTextSection: PageSectionImageTextSectionMutation
+  videoSection: PageSectionVideoSectionMutation
 }
 
 input PageMutation {

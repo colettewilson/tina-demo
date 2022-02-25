@@ -13,9 +13,7 @@ export default createMediaHandler({
   api_secret: process.env.CLOUDINARY_API_SECRET,
   authorized: async (req, _res) => {
     try {
-      if (process.env.NEXT_PUBLIC_USE_LOCAL_CLIENT) {
-        return true
-      }
+      if (process.env.NEXT_PUBLIC_USE_LOCAL_CLIENT) return true
 
       const user = await isAuthorized(req)
 
